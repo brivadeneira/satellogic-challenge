@@ -3,7 +3,7 @@ from typing import Dict
 from more_itertools import set_partitions
 
 
-def get_all_tasks_combinations(task_names: list[str], n_sat: int = 2) -> list[list[list[str]]]:
+def get_all_combinations(task_names: list[str], n_sat: int = 2) -> list[list[list[str]]]:
     """
     Returns all possible combination of tasks in 'n_sat' groups
     including 'no tasks' which allows a full assignation of tasks
@@ -17,8 +17,8 @@ def get_all_tasks_combinations(task_names: list[str], n_sat: int = 2) -> list[li
     ]
 
 
-def get_possible_task_combinations(tasks_list: list[list[list[str]]],
-                                   tasks_resources: Dict[str, dict]) -> list[list[list[str]]]:
+def get_possible_combinations(tasks_list: list[list[list[str]]],
+                              tasks_resources: Dict[str, dict]) -> list[list[list[str]]]:
     """
     Returns the combination of tasks that is possible according to the resources uses
     :param tasks_list: (list) with all possible combination of name tasks in 'n_sat' groups, including 'no tasks'
@@ -49,7 +49,7 @@ def get_possible_task_combinations(tasks_list: list[list[list[str]]],
     return possible_combinations
 
 
-def get_best_task_combinations(tasks_to_assign: dict[str, dict]) -> tuple[list[list[str]], float]:
+def get_best_task_combination(tasks_to_assign: dict[str, dict]) -> tuple[list[list[str]], float]:
     """
     Returns the best way to assign tasks in groups optimising their payoff
     :param tasks_to_assign: (dict) like {'<task_name>': {'resources': [<res_1>, <res_2>], 'payoff': <payoff>},
@@ -65,8 +65,8 @@ def get_best_task_combinations(tasks_to_assign: dict[str, dict]) -> tuple[list[l
     }
     tasks_payoff = {name: tasks_to_assign[name]["payoff"] for name in tasks_to_assign}
 
-    all_task_combinations = get_all_tasks_combinations(list_tasks)
-    possible_combinations = get_possible_task_combinations(
+    all_task_combinations = get_all_combinations(list_tasks)
+    possible_combinations = get_possible_combinations(
         all_task_combinations, tasks_resources
     )
 

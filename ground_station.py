@@ -2,7 +2,7 @@ import pickle
 import socket
 
 from utils.models import Satellite
-from utils.tasks_optimization import get_best_task_combinations
+from utils.optimazer import get_best_task_combination
 from utils.utils import log
 
 
@@ -73,7 +73,7 @@ def manage_tasks(tasks: dict[str, dict], sats: list[Satellite]) -> dict[str, lis
         msg = f"{task} task has a payoff of {tasks[task]['payoff']} and needs {' and '.join([str(r) for r in tasks[task]['resources']])} resources"
         log(msg)
 
-    tasks_to_assign, total_payoff = get_best_task_combinations(tasks)
+    tasks_to_assign, total_payoff = get_best_task_combination(tasks)
 
     if not tasks_to_assign:
         msg = "There is no a possible combination to assign the tasks."
