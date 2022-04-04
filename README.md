@@ -50,6 +50,12 @@ INFO:root:2022-04-04 00:29:39.185008:from ground station:above, provide, persona
 WARNING:root:2022-04-04 00:29:39.185273:from ground station:plant, total task(s) has not been allocated as a result of payoff optimization
 ```
 
+## Test
+
+```bash
+~/satellogic-challenge$ python -m pytest -vv tests/
+```
+
 ## Description
 
 A fleet ot **two** satellites which receives tasks from a single ground station is simulated as three different Python processes as below: 
@@ -125,17 +131,17 @@ print(tasks_to_assign)
   - First two groups are the groups of interest from here:
 
 ```python
-from utils.tasks_optimization import *
+from utils.optimazer import *
 
 all_task_combinations = get_all_tasks_combinations([task for task in tasks_to_assign])
 print(all_task_combinations)
 
 [
-  [['hard'], ['national']], 
-  [['hard'], ['national', 'represent']], 
-  [['hard'], ['represent']], 
-  [['hard', 'national'], ['represent']], 
-  [['national'], ['hard', 'represent']], 
+  [['hard'], ['national']],
+  [['hard'], ['national', 'represent']],
+  [['hard'], ['represent']],
+  [['hard', 'national'], ['represent']],
+  [['national'], ['hard', 'represent']],
   [['national'], ['represent']]
 ]
 ```
@@ -190,5 +196,5 @@ sorted(combination_payoff.items(), reverse=True)
 
 ## TODO
 
-- [ ] Add tests
+- [x] Add tests
 - [ ] Dockerize
