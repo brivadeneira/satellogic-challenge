@@ -1,3 +1,8 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+  
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+[![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://GitHub.com/brivadeneira/)
+
 # Satellogic challenge
 
 Simulation of satellite fleet tasking.
@@ -157,7 +162,7 @@ print(tasks_to_assign)
 - *All* possible combination of tasks in three *(number of sat + 1)* groups is determined:
   - Tasks designated to the first satellite *(Milanesat)*
   - Tasks designated to the second satellite *(Hamburguesat)*
-  - Tasks that without designation.
+  - Tasks without designation.
   - First two groups are the groups of interest from here:
 
 ```python
@@ -227,4 +232,10 @@ sorted(combination_payoff.items(), reverse=True)
 ## TODO
 
 - [x] Add tests
-- [ ] Dockerize
+- [x] Dockerize
+- [ ] Add an REST API where request tasks
+- [ ] Separate satellites and ground station into containers
+- [ ] Add async behaviour
+  - [ ] Async API for receiving tasks
+  - [ ] Queue for saving tasks into batches
+  - [ ] Async socket client
