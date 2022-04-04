@@ -2,14 +2,44 @@
 
 Simulation of satellite fleet tasking.
 
-## Installation
+## Installation and Usage
 
 ```bash
 ~$ git clone https://github.com/brivadeneira/satellogic-challenge && cd satellogic-challenge
+```
+
+### With docker
+
+#### Build the image
+
+```bash
+~/satellogic-challenge$ docker build -t satellite-simulation .
+```
+
+#### Run the simulation
+
+```bash
+~/satellogic-challenge$ docker run --env LEVEL=<LOG_LEVEL> --env TASKS=<N_TASKS> --env RESOURCES=<N_RESOURCES> PAYOFF=<MAX_PAYOFF> satellite-simulation
+```
+
+Where:
+
+* `LOG_LEVEL`:  'debug', 'info', 'warn' or 'error' *('info' by default)*
+* `N_TASKS`: (int) Number of *fake* tasks to build *e.g. 3* *(3 by default)*
+* `N_RESOURCES`: (int) Number of resources that can require the tasks *e.g. 3* *(3 by default)*
+* `MAX_PAYOFF`: (float) Maximum value of payoff for a single task *e.g. 10* *(10 by default)*
+
+> All parameters are optional, if any of them is not given, default values will be used.
+
+### Without docker
+
+#### Installation
+
+```
 ~/satellogic-challenge$ pip install -r requirements.txt
 ```
 
-## Usage
+#### Run the simulation
 
 ```bash
 ~/satellogic-challenge$ make all LOG_LEVEL=<level> N_TASKS=<n_tasks> N_RESOURCES=<n_resources> MAX_PAYOFF=<max_payoff> 
